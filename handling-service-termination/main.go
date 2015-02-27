@@ -29,6 +29,7 @@ func PanicNowHandler() http.Handler {
 type panicNowHandler struct{}
 
 func (h *panicNowHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+	io.WriteString(rw, "Starting to respond before the failure. \n")
 	panic("simulated panic!")
 }
 
@@ -134,7 +135,7 @@ func main() {
 	// no need wrapp the boolean with a Mutex unless you need to exact
 	// control on when requests are no longer being served.
 	serviceState.Running = false
-	i := 5
+	i := 3
 	for i > 0 {
 		log.Printf("Terminating in %d\n", i)
 		time.Sleep(1 * time.Second)
