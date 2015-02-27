@@ -28,6 +28,23 @@ func (h *panicHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 The first step for gracefully terminating is to handle errors from the `ListenAndServe` routine as well as signals.
 
 ```
+// Handle termination signals
+errors := make(chan error, 1)
+signals := make(chan os.Signal, 1)
+signal.Notify(signals, os.Interrupt)
+signal.Notify(signals, syscall.SIGTERM)
+
+// Initialise the handlers
+
+// Start serving
+go func() {
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		errors <- err
+	}
+}()
+
+
 // Waits until the service fails or it is terminated.
 select {
 case err := <-errors:
@@ -49,3 +66,16 @@ lifecycle need to be synchronised.
 ##Measuring how long the service was up
 
 It is often interesting to measure how long the service has been running. That can be done by deferring a function before invoking `ListenAndServe`.
+
+```
+// Used to print the uptime at the end of service execution
+func PrintUptime(start time.Time) {
+	log.Printf("Service was running for %v\n", time.Now().Sub(start))
+}
+
+func main() {
+	// At the end of the execution prints how long the service was running.
+	defer PrintUptime(time.Now())
+}
+
+```
