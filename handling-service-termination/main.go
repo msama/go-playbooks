@@ -101,12 +101,12 @@ func (h *terminationHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request
 		h.delegate.ServeHTTP(rw, req)
 	case serviceStateBootstrapping:
 		io.WriteString(rw, "Service is bootstrapping\n")
-		rw.WriteHeader(503)
+		rw.WriteHeader(http.StatusServiceUnavailable)
 	case serviceStateTerminating:
 		io.WriteString(rw, "Service is terminating\n")
-		rw.WriteHeader(503)
+		rw.WriteHeader(http.StatusServiceUnavailable)
 	case serviceStateTerminated:
-		rw.WriteHeader(503)
+		rw.WriteHeader(http.StatusServiceUnavailable)
 	}
 }
 
