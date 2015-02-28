@@ -55,13 +55,17 @@ func main() {
 	// Waits until the service fails or it is terminated.
 	select {
 	case err := <-errors:
+		// Handles the error from http.ListenAndServe 
 		log.Printf("Error: %v\n", err)
 		break
 	case sig := <-signals:
+		// Handles shotdown signals
 		log.Printf("Signal: %v\n", sig)
 		break
 	}
 
+	// Gracefully terminates after few seconds hoping that
+	// most of the handlers would have terminated.
 	serviceState.Running = false
 	i := 3
 	for i > 0 {

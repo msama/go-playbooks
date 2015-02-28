@@ -117,6 +117,7 @@ func main() {
 		}
 	}()
 
+	// Log that the service is now running on a certain port
 	log.Printf("Welcome:\n" +
 		"Connect to http://localhost:8080/hello for hello world\n" +
 		"Connect to http://localhost:8080/panic for simulating a panic\n")
@@ -124,9 +125,11 @@ func main() {
 	// Waits until the service fails or it is terminated.
 	select {
 	case err := <-errors:
+		// Handles the error from http.ListenAndServe
 		log.Printf("Error: %v\n", err)
 		break
 	case sig := <-signals:
+		// Handles shotdown signals
 		log.Printf("Signal: %v\n", sig)
 		break
 	}
