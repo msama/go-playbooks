@@ -28,31 +28,47 @@ func (h *panicHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 The first step for gracefully terminating is to handle errors from the `ListenAndServe` routine as well as signals.
 
 ```
-// Handle termination signals
-errors := make(chan error, 1)
-signals := make(chan os.Signal, 1)
-signal.Notify(signals, os.Interrupt)
-signal.Notify(signals, syscall.SIGTERM)
+func main() {
 
-// Initialise the handlers
-
-// Start serving
-go func() {
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		errors <- err
+	// The service state
+	serviceState := &ServiceState{
+		Running: true,
 	}
-}()
 
+	// Handle termination signals
+	errors := make(chan error, 1)
+	signals := make(chan os.Signal, 1)
+	signal.Notify(signals, os.Interrupt)
+	signal.Notify(signals, syscall.SIGTERM)
 
-// Waits until the service fails or it is terminated.
-select {
-case err := <-errors:
-	log.Printf("Error: %v\n", err)
-	break
-case sig := <-signals:
-	log.Printf("Signal: %v\n", sig)
-	break
+	// Initialise the handlers
+	// ...
+
+	// Start serving
+	go func() {
+		err := http.ListenAndServe(":8080", nil)
+		if err != nil {
+			errors <- err
+		}
+	}()
+  
+	// Waits until the service fails or it is terminated.
+	select {
+	case err := <-errors:
+		log.Printf("Error: %v\n", err)
+		break
+	case sig := <-signals:
+		log.Printf("Signal: %v\n", sig)
+		break
+	}
+
+	serviceState.Running = false
+	i := 3
+	for i > 0 {
+		log.Printf("Terminating in %d\n", i)
+		time.Sleep(1 * time.Second)
+		i = i - 1
+	}
 }
 ```
 
@@ -65,12 +81,14 @@ lifecycle need to be synchronised.
 
 ##Measuring how long the service was up
 
-It is often interesting to measure how long the service has been running. That can be done by deferring a function before invoking `ListenAndServe`.
+It is often interesting to measure how long the service has been running. Also while examinging the logs of a malfunctioning service it is often usefult to know if the main process is still running or if it has terminated and when. This can be done by deferring a function before invoking `ListenAndServe`.
 
 ```
 // Used to print the uptime at the end of service execution
 func PrintUptime(start time.Time) {
-	log.Printf("Service was running for %v\n", time.Now().Sub(start))
+	now := time.Now()
+	log.Printf("Service was running for %v\n", now.Sub(start))
+	log.Printf("Service was terminated at %v\n", now)
 }
 
 func main() {

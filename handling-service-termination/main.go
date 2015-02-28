@@ -86,7 +86,10 @@ func (h *terminationHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request
 
 // Used to print the uptime at the end of service execution
 func PrintUptime(start time.Time) {
-	log.Printf("Service was running for %v\n", time.Now().Sub(start))
+	now := time.Now()
+	log.Printf("Service was running for %v\n", now.Sub(start))
+	log.Printf("Service was terminated at %v\n", now)
+
 }
 
 func main() {
