@@ -10,10 +10,12 @@ import (
 	"time"
 )
 
-func HelloWorldHandler() http.Handler {
+// Factory method for helloWorldHandler
+func NewHelloWorldHandler() http.Handler {
 	return &helloWorldHandler{}
 }
 
+// An http.Handler which says hello world
 type helloWorldHandler struct{}
 
 func (h *helloWorldHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
@@ -22,10 +24,12 @@ func (h *helloWorldHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request)
 	io.WriteString(rw, "hello, world!\n")
 }
 
-func PanicNowHandler() http.Handler {
+// Factory method for panicNowHandler
+func NewPanicNowHandler() http.Handler {
 	return &panicNowHandler{}
 }
 
+// An http.Handler which simulates panic
 type panicNowHandler struct{}
 
 func (h *panicNowHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
@@ -33,14 +37,14 @@ func (h *panicNowHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	panic("simulated panic!")
 }
 
-// Creates a new handler which handles panic
-func PanicHandler(delegate http.Handler) http.Handler {
+// Factory method for panicHandler
+func NewPanicHandler(delegate http.Handler) http.Handler {
 	return &panicHandler{
 		delegate: delegate,
 	}
 }
 
-// An handler which can recover from panic events
+// An http.Handler which can recover from panic events
 type panicHandler struct {
 	delegate http.Handler
 }
@@ -58,30 +62,52 @@ func (h *panicHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	h.delegate.ServeHTTP(rw, req)
 }
 
-type ServiceState struct {
-	Running bool
+type serviceStateValue int
+
+const (
+	serviceStateBootstrapping serviceStateValue = iota
+	serviceStateRunning
+	serviceStateTerminating
+	serviceStateTerminated
+)
+
+func NewServerState() *ServiceState {
+	return &ServiceState{
+		State: serviceStateBootstrapping,
+	}
 }
 
-// Stop serving new requests if the server is terminating
-func TerminationHandler(state *ServiceState, delegate http.Handler) http.Handler {
+type ServiceState struct {
+	State serviceStateValue
+}
+
+// Factory method for terminationHandler
+func NewTerminationHandler(state *ServiceState, delegate http.Handler) http.Handler {
 	return &terminationHandler{
 		state:    state,
 		delegate: delegate,
 	}
 }
 
+// Stop serving new requests if the server is terminating
 type terminationHandler struct {
 	state    *ServiceState
 	delegate http.Handler
 }
 
 func (h *terminationHandler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	if !h.state.Running {
+	switch h.state.State {
+	case serviceStateRunning:
+		h.delegate.ServeHTTP(rw, req)
+	case serviceStateBootstrapping:
+		io.WriteString(rw, "Service is bootstrapping\n")
+		rw.WriteHeader(503)
+	case serviceStateTerminating:
 		io.WriteString(rw, "Service is terminating\n")
 		rw.WriteHeader(503)
-		return
+	case serviceStateTerminated:
+		rw.WriteHeader(503)
 	}
-	h.delegate.ServeHTTP(rw, req)
 }
 
 // Used to print the uptime at the end of service execution
@@ -92,14 +118,19 @@ func PrintUptime(start time.Time) {
 
 }
 
+// Release all the resources and completes service termination
+func ReleaseResourcesAndTerminate(state *ServiceState) {
+	// Nothing else to do in this example
+	state.State = serviceStateTerminated
+}
+
 func main() {
+	// The service state
+	serviceState := NewServerState()
+
 	// At the end of the execution prints how long the service was running.
 	defer PrintUptime(time.Now())
-
-	// The service state
-	serviceState := &ServiceState{
-		Running: true,
-	}
+	defer ReleaseResourcesAndTerminate(serviceState)
 
 	// Handle termination signals
 	errors := make(chan error, 1)
@@ -108,8 +139,8 @@ func main() {
 	signal.Notify(signals, syscall.SIGTERM)
 
 	// Setup and run this example
-	http.Handle("/hello", TerminationHandler(serviceState, PanicHandler(HelloWorldHandler())))
-	http.Handle("/panic", TerminationHandler(serviceState, PanicHandler(PanicNowHandler())))
+	http.Handle("/hello", NewTerminationHandler(serviceState, NewPanicHandler(NewHelloWorldHandler())))
+	http.Handle("/panic", NewTerminationHandler(serviceState, NewPanicHandler(NewPanicNowHandler())))
 	go func() {
 		err := http.ListenAndServe(":8080", nil)
 		if err != nil {
@@ -140,7 +171,7 @@ func main() {
 	// depend on the nature of the service. In most of cases there is
 	// no need wrapp the boolean with a Mutex unless you need to exact
 	// control on when requests are no longer being served.
-	serviceState.Running = false
+	serviceState.State = serviceStateTerminating
 	i := 3
 	for i > 0 {
 		log.Printf("Terminating in %d\n", i)
