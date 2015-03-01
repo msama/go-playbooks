@@ -6,7 +6,7 @@ MAINTAINER Michele Sama
 
 WORKDIR /go/src/aws-ebs-nginx
 ADD . /go/src/aws-ebs-nginx
-RUN go build main.go
+RUN go build -o aws-ebs-nginx main.go
 
-ENTRYPOINT aws-ebs-nginx
+ENTRYPOINT ./aws-ebs-nginx
 EXPOSE 3000
