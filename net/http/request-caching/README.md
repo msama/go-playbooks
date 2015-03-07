@@ -1,4 +1,4 @@
-#Http caching
+#Http request caching
 
 This playbook shows how to do http request caching by wrapping the DB logic with a cache inside the handler.
 
