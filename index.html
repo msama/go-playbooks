@@ -40,7 +40,8 @@
 <pre><code>.
 ├── encoding
 │   └── json
-│       └── basetypes-marshalling
+│       ├── basetypes-marshalling
+│       └── custom-marshaller
 └── net
     └── http
         ├── handling-service-termination
@@ -49,6 +50,40 @@
         │   └── handle-redirect
         └── request-caching
 </code></pre>
+
+<h2>
+<a id="encodingjson" class="anchor" href="#encodingjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>encoding/json</h2>
+
+<ul>
+<li>
+<b>Basetype marshalling</b>: how to marshal basetypes and how to handle missing fields.</li>
+<li>
+<b>Custom marshalling</b>: how to implement custom marshalling and unmarshalling logic.</li>
+</ul>
+
+<h2>
+<a id="nethttp" class="anchor" href="#nethttp" aria-hidden="true"><span class="octicon octicon-link"></span></a>net/http</h2>
+
+<ul>
+<li>
+<b>Handling service termination</b>: how to gracefully terminate http handling.</li>
+<li>
+<b>Serving https with AWS EBS</b>: how to serve https requests with AWS EBS.</li>
+<li>
+<b>Handling https redirect</b>: how to programmatically redirecting from http to https.</li>
+<li>
+<b>Http request caching</b>: how to cache http requests.</li>
+</ul>
+
+<h1>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h1>
+
+<p>GO is a great language. I am writing these playbooks to help other developers to practice it.</p>
+
+<h2>
+<a id="how-to-contribute" class="anchor" href="#how-to-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to contribute</h2>
+
+<p>Pull requests are welcomed. Also if you want to request a Playbook just open a ticket.</p>
       </section>
     </div>
     <footer>
