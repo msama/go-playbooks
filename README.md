@@ -6,17 +6,17 @@ Each playbook starts form a GO library and explains how to use it to solve a pra
 
 ## Sitemap
 
-.
-├── encoding
-│   └── json
-│       └── [base types marshalling](encoding/json/basetypes-marshalling)
-└── net
-    └── http
-        ├── [Graceful termination](net/http/handling-service-termination)
-        ├── redirecting-to-https
-        │   ├── [Serving https with AWS EBS](net/http/redirecting-to-https/aws-ebs-nginx)
-        │   └── [Serving https](net/http/redirecting-to-https/handle-redirect)
-        └── [Request caching](net/http/request-caching)
 
+.<br>
+├── encoding<br>
+│   └── json<br>
+│       └── [base types marshalling](encoding/json/basetypes-marshalling)<br>
+└── net<br>
+    └── http<br>
+        ├── [Graceful termination](net/http/handling-service-termination)<br>
+        ├── redirecting-to-https<br>
+        │   ├── [Serving https with AWS EBS](net/http/redirecting-to-https/aws-ebs-nginx)<br>
+        │   └── [Serving https](net/http/redirecting-to-https/handle-redirect)<br>
+        └── [Request caching](net/http/request-caching)<br>
 
 
