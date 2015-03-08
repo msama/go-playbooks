@@ -3,6 +3,8 @@ Go-playbooks is a collection of various hopefully useful playbooks and examples 
 
 Go is a new and amazin language with a very short learning curve. However how any new language there is always a bit of confusion on how to address common tasks and how to best use use the standard libraries. Go-playbooks is my attempt to provide a reference to help developers adopt GO at its best.
 
+[![Build Status](https://travis-ci.org/msama/go-playbooks.svg?branch=master)](https://travis-ci.org/msama/go-playbooks)
+
 ## Playbooks
 
 ```
