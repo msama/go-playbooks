@@ -30,12 +30,12 @@
         <h1>
 <a id="go-playbooks" class="anchor" href="#go-playbooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>go-playbooks</h1>
 
-<p>Various hopefully useful playbooks for solving common problems with go.</p>
+<p>Go-playbooks is a collection of various hopefully useful playbooks and examples for solving common problems with go.</p>
 
-<p>Each playbook starts form a GO library and explains how to use it to solve a practical problem.</p>
+<p>Go is a new and amazin language with a very short learning curve. However how any new language there is always a bit of confusion on how to address common tasks and how to best use use the standard libraries. Go-playbooks is my attempt to provide a reference to help developers adopt GO at its best.</p>
 
 <h2>
-<a id="sitemap" class="anchor" href="#sitemap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sitemap</h2>
+<a id="playbooks" class="anchor" href="#playbooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Playbooks</h2>
 
 <pre><code>.
 ├── encoding
@@ -44,12 +44,21 @@
 │       └── custom-marshaller
 └── net
     └── http
-        ├── handling-service-termination
-        ├── redirecting-to-https
-        │   ├── aws-ebs-nginx
-        │   └── handle-redirect
+        ├── graceful-service-termination
+        ├── https-aws-ebs-nginx
+        ├── programmatic-http-redirect
         └── request-caching
 </code></pre>
+
+<p>The above tree shows all the available playbooks. Playbooks are organised with a tree tructure following the <code>&lt;package&gt;/&lt;book&gt;</code> convention. Each playbook contains a <code>main.go</code> file which can be used to run it. Alse each playbook contains a <code>README.md</code> file with a description of what the playbook does and additional setup instruction.</p>
+
+<p>To run a playbook from the root folder you can run the following:</p>
+
+<pre><code>cd &lt;package&gt;/&lt;book&gt;
+go run main.go
+</code></pre>
+
+<p>Certain playbook may require additional setup. Please read the <code>README.md</code> first.</p>
 
 <h2>
 <a id="encodingjson" class="anchor" href="#encodingjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>encoding/json</h2>
@@ -66,24 +75,32 @@
 
 <ul>
 <li>
-<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/handling-service-termination">Handling service termination</a></b>: how to gracefully terminate http handling.</li>
+<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/graceful-service-termination">Graceful service termination</a></b>: how to gracefully terminate http handling.</li>
 <li>
-<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/redirecting-to-https/aws-ebs-nginx">Serving https with AWS EBS</a></b>: how to serve https requests with AWS EBS.</li>
+<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/https-aws-ebs-nginx">Serving https with AWS EBS</a></b>: how to serve https requests with AWS EBS.</li>
 <li>
-<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/redirecting-to-https/handle-redirect">Handling https redirect</a></b>: how to programmatically redirecting from http to https.</li>
+<b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/programmatic-http-redirect">Programmatic http redirect</a></b>: how to programmatically redirecting from http to https.</li>
 <li>
 <b><a href="https://github.com/msama/go-playbooks/tree/master/net/http/request-caching">Http request caching</a></b>: how to cache http requests.</li>
 </ul>
 
-<h1>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h1>
-
-<p>GO is a great language. I am writing these playbooks to help other developers to practice it.</p>
-
 <h2>
-<a id="how-to-contribute" class="anchor" href="#how-to-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to contribute</h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
-<p>Pull requests are welcomed. Also if you want to request a Playbook just open a ticket.</p>
+<h3>
+<a id="submitting-a-new-playbook" class="anchor" href="#submitting-a-new-playbook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Submitting a new playbook</h3>
+
+<p>The best way to contribute is to follow the Github pull request workflow. Fork go-palybooks, create a functional branch and send a pull request to <code>msama/master</code>. </p>
+
+<h3>
+<a id="requesting-a-new-playbook" class="anchor" href="#requesting-a-new-playbook" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requesting a new playbook</h3>
+
+<p>If you are trying to solve a problem and you would like to see a playbook, please open a ticket in Github.</p>
+
+<h3>
+<a id="reporting-bugs-or-improving-a-solution" class="anchor" href="#reporting-bugs-or-improving-a-solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reporting bugs or improving a solution</h3>
+
+<p>If you see a bug or if you want to suggest a different solution please either send a pull request or open a ticket in Github.</p>
       </section>
     </div>
     <footer>
