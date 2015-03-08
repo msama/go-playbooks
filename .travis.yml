@@ -5,7 +5,7 @@ go:
   - tip
 
 env:
-	global:
+	matrix:
 	    - PLAYBOOK="encoding/json/basetypes-marshalling"
 	    - PLAYBOOK="encoding/json/custom-marshaller"
 	    - PLAYBOOK="net/http/graceful-service-termination"
