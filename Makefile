@@ -1,4 +1,4 @@
 .PHONY: build
 build:
-	cd $PLAYBOOK
-	go build main.go
+	echo building $(PLAYBOOK)
+	go build -a $(PLAYBOOK)/main.go
