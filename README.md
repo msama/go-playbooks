@@ -47,6 +47,12 @@ Certain playbook may require additional setup. Please read the `README.md` first
 
 The best way to contribute is to follow the Github pull request workflow. Fork go-palybooks, create a functional branch and send a pull request to `msama/master`. 
 
+Please respect the followign submission guidelines:
+* Should be useful: Playbooks need to address a single well defined problem.
+* Should be as simple as possible but not simpler: Playbooks have to be easy to read and self contained.
+* Must compile: the pull request must compile. Please add new playbooks to Travis.
+* Must be well documented: please update or create README.md files for each Playbook.
+
 ### Requesting a new playbook
 
 If you are trying to solve a problem and you would like to see a playbook, please open a ticket in Github.

@@ -2,16 +2,14 @@ language: go
 
 go:
   - 1.4
-  - tip
 
 env:
-	matrix:
-	    - PLAYBOOK="encoding/json/basetypes-marshalling"
-	    - PLAYBOOK="encoding/json/custom-marshaller"
-	    - PLAYBOOK="net/http/graceful-service-termination"
-	    - PLAYBOOK="net/http/https-aws-ebs-nginx"
-	    - PLAYBOOK="net/http/programmatic-http-redirect"
-	    - PLAYBOOK="net/http/request-caching"
-
+    matrix:
+        - PLAYBOOK="encoding/json/basetypes-marshalling"
+        - PLAYBOOK="encoding/json/custom-marshaller"
+        - PLAYBOOK="net/http/graceful-service-termination"
+        - PLAYBOOK="net/http/https-aws-ebs-nginx"
+        - PLAYBOOK="net/http/programmatic-http-redirect"
+        - PLAYBOOK="net/http/request-caching"
 
 script: "make build $PLAYBOOK"
