@@ -1,10 +1,9 @@
 # go-playbooks
-Various hopefully useful playbooks for solving common problems with go.
+Go-playbooks is a collection of various hopefully useful playbooks and examples for solving common problems with go.
 
-Each playbook starts form a GO library and explains how to use it to solve a practical problem.
+Go is a new and amazin language with a very short learning curve. However how any new language there is always a bit of confusion on how to address common tasks and how to best use use the standard libraries. Go-playbooks is my attempt to provide a reference to help developers adopt GO at its best.
 
-
-## Sitemap
+## Playbooks
 
 ```
 .
@@ -14,12 +13,20 @@ Each playbook starts form a GO library and explains how to use it to solve a pra
 │       └── custom-marshaller
 └── net
     └── http
-        ├── handling-service-termination
-        ├── redirecting-to-https
-        │   ├── aws-ebs-nginx
-        │   └── handle-redirect
+        ├── graceful-service-termination
+        ├── https-aws-ebs-nginx
+        ├── programmatic-http-redirect
         └── request-caching
 ```
+
+The above tree shows all the available playbooks. Playbooks are organised with a tree tructure following the `<package>/<book>` convention. Each playbook contains a `main.go` file which can be used to run it. Alse each playbook contains a `README.md` file with a description of what the playbook does and additional setup instruction.
+
+To run a playbook from the root folder you can run the following:
+```
+cd <package>/<book>
+go run main.go
+```
+Certain playbook may require additional setup. Please read the `README.md` first.
 
 ## encoding/json
 
@@ -28,15 +35,22 @@ Each playbook starts form a GO library and explains how to use it to solve a pra
 
 ## net/http
 
-* <b>[Handling service termination](https://github.com/msama/go-playbooks/tree/master/net/http/handling-service-termination)</b>: how to gracefully terminate http handling.
-* <b>[Serving https with AWS EBS](https://github.com/msama/go-playbooks/tree/master/net/http/redirecting-to-https/aws-ebs-nginx)</b>: how to serve https requests with AWS EBS.
-* <b>[Handling https redirect](https://github.com/msama/go-playbooks/tree/master/net/http/redirecting-to-https/handle-redirect)</b>: how to programmatically redirecting from http to https.
+* <b>[Graceful service termination](https://github.com/msama/go-playbooks/tree/master/net/http/graceful-service-termination)</b>: how to gracefully terminate http handling.
+* <b>[Serving https with AWS EBS](https://github.com/msama/go-playbooks/tree/master/net/http/https-aws-ebs-nginx)</b>: how to serve https requests with AWS EBS.
+* <b>[Programmatic http redirect](https://github.com/msama/go-playbooks/tree/master/net/http/programmatic-http-redirect)</b>: how to programmatically redirecting from http to https.
 * <b>[Http request caching](https://github.com/msama/go-playbooks/tree/master/net/http/request-caching)</b>: how to cache http requests.
 
-# About
 
-GO is a great language. I am writing these playbooks to help other developers to practice it.
+## Contributing
 
-## How to contribute
+### Submitting a new playbook
 
-Pull requests are welcomed. Also if you want to request a Playbook just open a ticket.
+The best way to contribute is to follow the Github pull request workflow. Fork go-palybooks, create a functional branch and send a pull request to `msama/master`. 
+
+### Requesting a new playbook
+
+If you are trying to solve a problem and you would like to see a playbook, please open a ticket in Github.
+
+### Reporting bugs or improving a solution
+
+If you see a bug or if you want to suggest a different solution please either send a pull request or open a ticket in Github.
