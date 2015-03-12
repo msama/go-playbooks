@@ -5,6 +5,8 @@ go:
 
 env:
     matrix:
+        - PLAYBOOK="algorithms/sorting/bubble-sort"
+        - PLAYBOOK="algorithms/algebraic/pascals-triangle"
         - PLAYBOOK="encoding/json/basetypes-marshalling"
         - PLAYBOOK="encoding/json/custom-marshaller"
         - PLAYBOOK="net/http/graceful-service-termination"

@@ -9,6 +9,11 @@ Go is a new and amazin language with a very short learning curve. However how an
 
 ```
 .
+├── algorithms
+│   ├── algebraic
+│   │   └── pascals-triangle
+│   └── sorting
+│       └── bubble-sort
 ├── encoding
 │   └── json
 │       ├── basetypes-marshalling
@@ -29,6 +34,12 @@ cd <package>/<book>
 go run main.go
 ```
 Certain playbook may require additional setup. Please read the `README.md` first.
+
+## algorithms/sorting
+* <b>[Bubble sort](https://github.com/msama/go-playbooks/tree/master/algorithms/sorting/bubble-sort)</b>: implementation of bubbe sort algorithm.
+
+## algorithms/algebraic
+* <b>[Pascal's triangle](https://github.com/msama/go-playbooks/tree/master/algorithms/algebraic/pascals-triangle)</b>: the Pascal's triangle both iterative and recursive.
 
 ## encoding/json
 
