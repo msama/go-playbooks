@@ -3,10 +3,18 @@ language: go
 go:
   - 1.4
 
+install:
+  - go get github.com/mattn/go-sqlite3
+  - go get code.google.com/p/go-uuid/uuid
+
 env:
     matrix:
-        - PLAYBOOK="algorithms/sorting/bubble-sort"
         - PLAYBOOK="algorithms/algebraic/pascals-triangle"
+        - PLAYBOOK="algorithms/constraints/n-queens"
+        - PLAYBOOK="algorithms/data-streaming/moving-average"
+        - PLAYBOOK="algorithms/sorting/bubble-sort"
+        - PLAYBOOK="algorithms/sorting/merge-sort"
+        - PLAYBOOK="database/sql/driver/custom-types"
         - PLAYBOOK="encoding/json/basetypes-marshalling"
         - PLAYBOOK="encoding/json/custom-marshaller"
         - PLAYBOOK="net/http/graceful-service-termination"

@@ -19,6 +19,10 @@ Go is a new and amazin language with a very short learning curve. However how an
 │   └── sorting
 │       ├── bubble-sort
 │       └── merge-sort
+├── database
+│   └── sql
+│       └── driver
+│           └── custom-types
 ├── encoding
 │   └── json
 │       ├── basetypes-marshalling
@@ -55,6 +59,10 @@ Certain playbook may require additional setup. Please read the `README.md` first
 ## algorithms/sorting
 * <b>[Bubble sort](https://github.com/msama/go-playbooks/tree/master/algorithms/sorting/bubble-sort)</b>: implementation of bubble sort algorithm.
 * <b>[Merge sort](https://github.com/msama/go-playbooks/tree/master/algorithms/sorting/merge-sort)</b>: recursive implementation of merge sort.
+
+## database/sql/driver
+
+* <b>[Custom types](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/custom-types)</b>: how to write to specialized types to a sql driver.
 
 ## encoding/json
 
