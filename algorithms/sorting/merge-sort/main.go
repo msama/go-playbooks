@@ -30,9 +30,9 @@ func TopDownMerge(input []int, output []int) {
 	i0 := 0
 	i1 := middle
 
-	// While there are elements in the left or right runs
+	// While there are elements in the left or right
 	for j := 0; j < end; j++ {
-		// If left run head exists and is <= existing right run head.
+		// If left head exists and is <= existing right head.
 		if i0 < middle && (i1 >= end || input[i0] <= input[i1]) {
 			output[j] = input[i0]
 			i0 = i0 + 1
