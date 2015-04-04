@@ -24,7 +24,6 @@ func TopDownSplitMerge(input []int, output []int) {
 }
 
 func TopDownMerge(input []int, output []int) {
-	begin := 0
 	middle := len(input) / 2
 	end := len(input)
 	i0 := 0
