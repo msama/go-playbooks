@@ -22,7 +22,8 @@ Go is a new and amazin language with a very short learning curve. However how an
 ├── database
 │   └── sql
 │       └── driver
-│           └── custom-types
+│           ├── custom-types
+│           └── struct-serialization
 ├── encoding
 │   └── json
 │       ├── basetypes-marshalling
@@ -33,6 +34,7 @@ Go is a new and amazin language with a very short learning curve. However how an
         ├── https-aws-ebs-nginx
         ├── programmatic-http-redirect
         └── request-caching
+
 ```
 
 The above tree shows all the available playbooks. Playbooks are organised with a tree tructure following the `<package>/<book>` convention. Each playbook contains a `main.go` file which can be used to run it. Alse each playbook contains a `README.md` file with a description of what the playbook does and additional setup instruction.
@@ -63,7 +65,7 @@ Certain playbook may require additional setup. Please read the `README.md` first
 ## database/sql/driver
 
 * <b>[Custom types](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/custom-types)</b>: how to write to specialized types to a sql driver.
-* <b>[Struct serialization](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/struct-serialization)</b>: how to serializa go structs in sql fields.
+* <b>[Struct serialization](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/struct-serialization)</b>: how to delegate the sql driver for serializing and deserializing struct into sql fields.
 
 ## encoding/json
 

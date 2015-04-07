@@ -15,6 +15,7 @@ env:
         - PLAYBOOK="algorithms/sorting/bubble-sort"
         - PLAYBOOK="algorithms/sorting/merge-sort"
         - PLAYBOOK="database/sql/driver/custom-types"
+        - PLAYBOOK="database/sql/driver/struct-serialization"
         - PLAYBOOK="encoding/json/basetypes-marshalling"
         - PLAYBOOK="encoding/json/custom-marshaller"
         - PLAYBOOK="net/http/graceful-service-termination"
