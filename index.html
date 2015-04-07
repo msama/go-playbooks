@@ -45,7 +45,8 @@
 ├── database
 │   └── sql
 │       └── driver
-│           └── custom-types
+│           ├── custom-types
+│           └── struct-serialization
 ├── encoding
 │   └── json
 │       ├── basetypes-marshalling
@@ -56,6 +57,7 @@
         ├── https-aws-ebs-nginx
         ├── programmatic-http-redirect
         └── request-caching
+
 </code></pre>
 
 <p>The above tree shows all the available playbooks. Playbooks are organised with a tree tructure following the <code>&lt;package&gt;/&lt;book&gt;</code> convention. Each playbook contains a <code>main.go</code> file which can be used to run it. Alse each playbook contains a <code>README.md</code> file with a description of what the playbook does and additional setup instruction.</p>
@@ -108,6 +110,8 @@ go run main.go
 <ul>
 <li>
 <b><a href="https://github.com/msama/go-playbooks/tree/master/database/sql/driver/custom-types">Custom types</a></b>: how to write to specialized types to a sql driver.</li>
+<li>
+<b><a href="https://github.com/msama/go-playbooks/tree/master/database/sql/driver/struct-serialization">Struct serialization</a></b>: how to delegate the sql driver for serializing and deserializing struct into sql fields.</li>
 </ul>
 
 <h2>
