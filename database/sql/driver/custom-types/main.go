@@ -91,13 +91,9 @@ func query(db *sql.DB, code string) (*Request, error) {
 	r := &Request{
 		Code: code,
 	}
-	//var status string
-	err := db.QueryRow("SELECT status FROM requests WHERE code = ?", code).Scan(&r.Status)
-	if err != nil {
+	if err := db.QueryRow("SELECT status FROM requests WHERE code = ?", code).Scan(&r.Status); err != nil {
 		return nil, err
 	}
-	//log.Println(status)
-	//r.Status = RequestStatus(status)
 	return r, nil
 }
 
