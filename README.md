@@ -63,6 +63,7 @@ Certain playbook may require additional setup. Please read the `README.md` first
 ## database/sql/driver
 
 * <b>[Custom types](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/custom-types)</b>: how to write to specialized types to a sql driver.
+* <b>[Struct serialization](https://github.com/msama/go-playbooks/tree/master/database/sql/driver/struct-serialization)</b>: how to serializa go structs in sql fields.
 
 ## encoding/json
 
