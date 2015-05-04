@@ -18,6 +18,7 @@ env:
         - PLAYBOOK="database/sql/driver/struct-serialization"
         - PLAYBOOK="encoding/json/basetypes-marshalling"
         - PLAYBOOK="encoding/json/custom-marshaller"
+        - PLAYBOOK="mgo/mongo-crud"
         - PLAYBOOK="net/http/graceful-service-termination"
         - PLAYBOOK="net/http/https-aws-ebs-nginx"
         - PLAYBOOK="net/http/programmatic-http-redirect"

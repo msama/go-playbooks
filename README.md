@@ -28,6 +28,8 @@ Go is a new and amazin language with a very short learning curve. However how an
 │   └── json
 │       ├── basetypes-marshalling
 │       └── custom-marshaller
+├── mgo
+│   └── mongo-crud
 └── net
     └── http
         ├── graceful-service-termination
@@ -71,6 +73,10 @@ Certain playbook may require additional setup. Please read the `README.md` first
 
 * <b>[Basetype marshalling](https://github.com/msama/go-playbooks/tree/master/encoding/json/basetypes-marshalling)</b>: how to marshal basetypes and how to handle missing fields.
 * <b>[Custom marshalling](https://github.com/msama/go-playbooks/tree/master/encoding/json/custom-marshaller)</b>: how to implement custom marshalling and unmarshalling logic.
+
+## mgo
+
+* <b>[Mongo CRUD](https://github.com/msama/go-playbooks/tree/master/mgo/mongo-crud)</b>: how to perform CRUD operations (create, read, update, delete) using Mongo DB.
 
 ## net/http
 
