@@ -6,6 +6,8 @@ go:
 install:
   - go get github.com/mattn/go-sqlite3
   - go get code.google.com/p/go-uuid/uuid
+  - go get labix.org/v2/mgo
+  - go get labix.org/v2/mgo/bson
 
 env:
     matrix:
