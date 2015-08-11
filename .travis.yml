@@ -8,6 +8,7 @@ install:
   - go get code.google.com/p/go-uuid/uuid
   - go get labix.org/v2/mgo
   - go get labix.org/v2/mgo/bson
+  - go get github.com/willf/bloom
 
 env:
     matrix:
@@ -15,7 +16,8 @@ env:
         - PLAYBOOK="algorithms/constraints/n-queens"
         - PLAYBOOK="algorithms/data-streaming/moving-average"
         - PLAYBOOK="algorithms/sorting/bubble-sort"
-        - PLAYBOOK="algorithms/sorting/merge-sort"
+        - PLAYBOOK="algorithms/probabilistic/bloomfilters"
+        - PLAYBOOK="net/http/request-caching"
         - PLAYBOOK="database/sql/driver/custom-types"
         - PLAYBOOK="database/sql/driver/struct-serialization"
         - PLAYBOOK="encoding/json/basetypes-marshalling"

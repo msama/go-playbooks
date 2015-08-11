@@ -16,6 +16,8 @@ Go is a new and amazin language with a very short learning curve. However how an
 │   │   └── n-queens
 │   ├── data-streaming
 │   │   └── moving-average
+│   ├── probabilistic
+│   │   └── bloomfilters
 │   └── sorting
 │       ├── bubble-sort
 │       └── merge-sort
@@ -36,7 +38,6 @@ Go is a new and amazin language with a very short learning curve. However how an
         ├── https-aws-ebs-nginx
         ├── programmatic-http-redirect
         └── request-caching
-
 ```
 
 The above tree shows all the available playbooks. Playbooks are organised with a tree tructure following the `<package>/<book>` convention. Each playbook contains a `main.go` file which can be used to run it. Alse each playbook contains a `README.md` file with a description of what the playbook does and additional setup instruction.
